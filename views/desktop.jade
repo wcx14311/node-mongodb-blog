@@ -1,0 +1,84 @@
+doctype html
+html(lang='zh')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title 博客内容管理
+    link(rel='stylesheet', type='text/css', href='/css/admin.css')
+    link(rel='stylesheet', type='text/css', href='/css/material-design-iconic-font.min.css')
+  body
+    .mg-warp
+      .left-panel
+        .logo-top
+        .l-miniProfile.clearfix
+          .c-miniProfile__img
+            img(src='#{user.photo}')
+          .c-miniProfile__info
+            span.u-block 系统管理员
+            h4 #{user.name}
+        .l-menulist
+          ul.fu
+            li
+              a.open(href='./userlist', target='main')
+                i.icon.mdi.mdi-accounts-list
+                span 用户管理
+            li
+              a(href='./articleList?page=1', target='main')
+                i.icon.mdi.mdi-assignment-o
+                span 文章管理
+            li
+              a.has
+                i.icon.mdi.mdi-settings
+                span 系统设置
+              ul.zi(style="display:none;")
+                li
+                  a(href='./settphoto', target='main')
+                    span 头像更换
+                li
+                  a(href='./settphoto', target='main')
+                    span 添加分类
+                li
+                  a(href='./settphoto', target='main')
+                    span 头像更换
+      .right-panel
+        .top-bar
+          .burger
+            .x
+            .y
+            .z
+          a(style="float:right;padding:19px 24px;",href="./logout") 退出登录
+        .center-box(style="-webkit-overflow-scrolling:touch;overflow:auto;")
+          iframe(frameborder='0', src='./userlist', name='main', marginheight='0', marginwidth='0', width='100%', height='100%', scrolling='auto',style="overflow: auto;",class="myFrame")
+    script(type='text/javascript', src='/js/jquery.min.js')
+    script(type='text/javascript').
+      $(function(argument) {
+        $('ul.fu>li>a').click(function(){
+          $('ul.fu>li>a').removeClass('open')
+          $(this).addClass('open')
+          var hsaa = $(this).find('ul.zi>li');
+          if($(this).hasClass('has')){
+            var zifu = $(this).siblings('ul.zi');
+            if(zifu.is(":hidden")){
+              zifu.show();
+            }else{
+              zifu.hide();
+            }
+          }else{
+            var brzifu = $(this).parent().siblings().find('ul.zi');
+            brzifu.hide();
+          }
+        });
+
+        $('.burger').click(function(){
+          if($(this).hasClass('open')){
+            $(this).removeClass('open')
+            $('.mg-warp').removeClass('open')
+          }else{
+            $(this).addClass('open')
+            $('.mg-warp').addClass('open')
+          }
+        })
+      });

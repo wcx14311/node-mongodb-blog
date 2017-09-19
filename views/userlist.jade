@@ -1,0 +1,108 @@
+doctype html
+html(lang='zh',style='overflow: auto;')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='stylesheet', type='text/css', href='/css/material-design-iconic-font.min.css')
+    link(rel='stylesheet', type='text/css', href='/css/perfect-scrollbar.min.css')
+    link(rel='stylesheet', type='text/css', href='/css/style.css',)
+  body(style="padding:5px 15px 10px 5px")
+    .frame-warp
+      .panel.panel-default
+        .panel-heading
+          | 用户管理 
+          .tools.dropdown
+            span.icon.mdi.mdi-account-add(id="addbtn")  
+              span(style="display: inline-block;float:right;font-size:14px;margin-top:1px;margin-left:5px") 添加管理员
+        .panel-body
+          table.table.table-condensed.table-hover.table-bordered.table-striped
+            thead
+              tr
+                th
+                th 用户名
+                th 密码
+                th 创建时间
+                th 操作
+            tbody
+              each item in list
+                tr(id="#{item.id}")
+                  td.user-avatar(width="50")
+                    img(src='#{item.photo}' style='margin-right:0px;')
+                  td #{item.name}
+                  td #{item.password}
+                  td.convert-time #{item.createdate}
+                  td 
+                    button.btn.btn-space.btn-primary.btn-sm(onclick="delectUserById('#{item.id}')") 删除
+      .user-info(style="display:none;")
+        .content
+          .panel.panel-default
+            .panel-heading.panel-heading-divider
+              | 添加管理员
+              .tools.dropdown
+                span.icon.mdi.mdi-close
+            .panel-body.text-center
+              div(style="padding:0 60px;")
+                table
+                  tr
+                    th(width="55") 用户名
+                    td 
+                      input(type='text', id="name", placeholder='用户名')
+                  tr
+                    th 密码
+                    td 
+                      input(type='password', id="password", placeholder='密码')
+                  tr
+                    th 确认密码
+                    td 
+                      input(type='password', id="password2", placeholder='确认密码')
+                  tr
+                    th
+                    td(style="text-align:left")
+                      button.btn.btn-info.waves-effect.waves-light(type='submit', id="adduserbtn") 确认添加
+    script(type='text/javascript', src='/js/jquery.min.js')
+    script(type='text/javascript', src='/js/tools.js')
+    script(type='text/javascript').
+      $(function(argument) {
+        var photoIndex=['','1','2','3','4','5','6'];
+        $('#addbtn').click(function(){
+          $('.user-info').show();
+        })
+        $('.user-info .icon').click(function(){
+          $('.user-info').hide()
+        });
+        $('.convert-time').each(function(index,value){
+          $(value).text((new Date($(value).text())).Format("yyyy-MM-dd hh:mm:ss"))
+        })
+        $('#adduserbtn').click(function(){
+          if($('#name').val().length<1){
+            alert('请输入用户名');
+            return;
+          };
+          if($('#password').val().length<1){
+            alert('密码不对');
+            return;
+          }
+          if($('#password').val()!=$('#password2').val()){
+            alert('两次密码输出不一致');
+            return;
+          }
+          $.ajax({
+            url: './adduser',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              name:$('#name').val(),
+              password:$('#password').val(),
+              photo:"/images/user/avatar"+ photoIndex.getRandomItem() +".png"
+            },
+            success:function(res){
+              console.log(res);
+              $('.user-info').hide();
+              window.location.reload();
+            }
+          });
+        });
+      })

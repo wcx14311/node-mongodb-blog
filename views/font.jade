@@ -1,0 +1,58 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title 头像修改
+    link(rel='stylesheet', type='text/css', href='/css/material-design-iconic-font.min.css')
+    link(rel='stylesheet', type='text/css', href='/css/perfect-scrollbar.min.css')
+    link(rel='stylesheet', type='text/css', href='/simditor/simditor.css')
+    link(rel='stylesheet', type='text/css', href='/css/style.css')
+    link(rel='stylesheet', type='text/css', href='/c/head/cropper.min.css')
+    link(rel='stylesheet', type='text/css', href='/c/head/sitelogo.css')
+    
+    style(type='text/css').
+      .avatar-btns button {
+      height: 35px;
+      }
+  body
+    .frame-warp
+      .panel.panel-default
+        .panel-heading 用户管理 
+        .panel-body
+          button.btn.btn-primary(id="settouxing") 修改头像
+          a(href="/images/portfolio-4.jpg",id="pic1",onclick="savepic();return false;",style="cursor:hand") 点击下载
+          .user_pic(style='margin: 10px;')
+            img(src='#{user.photo}')
+    #avatar-modal.dialog-imgupLoad(style="display:none")
+      .dialog-bg
+        .dialog-content
+          form.avatar-form
+            .dialog-header
+              button.close(type="button") ×
+              h4#avatar-modal-label.modal-title 上传图片
+            .dialog-body
+              .avatar-body
+                .line-row.avatar-upload
+                  input.avatar-src(name='avatar_src', type='hidden')
+                  input.avatar-data(name='avatar_data', type='hidden')
+                  button.btn-danger(type="button",onclick="$('input[id=avatarInput]').click();") 请选择图片
+                  span#avatar-name
+                  input#avatarInput.avatar-input.hide(name='avatar_file', type='file')
+                .line-row.clearfix
+                  .fl.img-yuan
+                    .avatar-wrapper
+                  .fl.img-view
+                    .avatar-preview.preview-lg(id="imageHead")
+                      img(src='#{user.photo}')
+                    .avatar-preview.preview-md
+                      img(src='#{user.photo}')
+                    .avatar-preview.preview-sm
+                      img(src='#{user.photo}')
+                  .line-row.avatar-btns
+                      button.btn-danger.avatar-save(type="button")  保存修改
+    .dialog-loading(aria-label='Loading', role='img', tabindex='-1')
+    script(type='text/javascript' src='/c/head/jquery.min.js')
+    script(type='text/javascript' src='/c/head/cropper.js')
+    script(type='text/javascript' src='/c/head/sitelogo.js')
+    script(type='text/javascript' src='/c/head/html2canvas.min.js')
+    script(type='text/javascript' src="/c/head/main.js") 

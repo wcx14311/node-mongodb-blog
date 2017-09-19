@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    meta(http-equiv='content-type', content='text/html;charset=utf8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='renderer', content='webkit')
+    meta(name='renderer', content='webkit|ie-comp|ie-stand')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui')
+    title 炖萝卜
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/css/admin.css')
+  body
+    .ft-full
+      .w1000
+        .ft-content
+          .ft-header
+            span 文章列表
+          .ft-bodyer
+            ul.wenz-liet
+              each item in list
+                li.wenz-liet-item
+                  a(href="articleDetial?id=#{item.id}")
+                    span #{item.name}
+                  span.convert-time(style="float:right") #{item.createdate}
+            .ft-footer(style="text-align:center")
+              .qt-pagination
+                if !prevbtn
+                  a.hf(href="./articleList?page=#{pageNo-1}") 上一页
+                else
+                  a.no-hf 上一页
+                if !nextbtn
+                  a.hf(href="./articleList?page=#{pageNo+1}") 下一页
+                else
+                  a.no-hf 下一页
+                | &nbsp; 第 #{pageNo} 页 
+    script(type='text/javascript', src='/js/jquery.min.js')
+    script(type='text/javascript', src='/js/jquery.pager.js')
+    script(type='text/javascript', src='/js/tools.js')
+    script(type='text/javascript').
+      $(function(argument) {
+        $('.convert-time').each(function(index,value){
+          $(value).text((new Date($(value).text())).Format("yyyy-M-d"))
+        });
+      });

@@ -1,0 +1,57 @@
+doctype html
+html(lang='zh-CN')
+  head
+    meta(charset='utf-8')
+    meta(name='renderer', content='webkit')
+    meta(name='renderer', content='webkit|ie-comp|ie-stand')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui')
+    title 管理员登录
+    link(rel='stylesheet', type='text/css', href='/css/admin.css')
+  body.login-body
+    canvas(id="demo-canvas") 111
+    .form-center-box
+      .form-inline-box
+        .box-hd 
+          img(src="/images/lamp.svg")
+          span 博客后台
+        .box-bd
+          .form-group
+            input.form-control(type='text', name='username', placeholder='账号', autocomplete='off', required, s-msg='请输入账号')
+            .ant-form-explain
+          .form-group
+            input.form-control(type='password', name='password', placeholder='密码', autocomplete='off', required, s-msg='请输入密码')
+            .ant-form-explain 
+          .form-group
+            button.btn.btn-primary.btn-xl(type='submit',id="doLogin") 登录
+        .box-ft    
+  script(type='text/javascript', src='/js/jquery.min.js')
+  script(type='text/javascript', src='/js/jquery.form.check.js')
+  script(type='text/javascript', src="/js/TweenLite.min.js")
+  script(type='text/javascript', src="/js/EasePack.min.js")
+  script(type='text/javascript', src="/js/rAF.js")
+  script(type='text/javascript', src="/js/demo-1.js")
+  script(type='text/javascript').
+    $(function(){
+      $("[name='username']").focus();
+      $('#doLogin').click(function(){
+        $('.box-bd').formCheck(function(){
+          $.ajax({
+            url: '/admin/dologin',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              username:$("[name='username']").val(),
+              password:$("[name='password']").val()
+            },
+            success:function(res){
+              if(res.status){
+                window.location.href="/admin/desktop";
+              }else{
+                alert("登录失败")
+              }
+            }
+          });
+        })
+      })
+    })

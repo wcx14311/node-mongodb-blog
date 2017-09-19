@@ -1,0 +1,69 @@
+doctype html
+html(lang='zh')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='stylesheet', type='text/css', href='/css/material-design-iconic-font.min.css')
+    link(rel='stylesheet', type='text/css', href='/css/perfect-scrollbar.min.css')
+    link(rel='stylesheet', type='text/css', href='/css/style.css',)
+  body(style="padding:5px 15px 10px 5px")
+    .frame-warp
+      .panel.panel-default
+        .panel-heading
+          | 文章管理
+          .tools.dropdown
+            a.icon.mdi.mdi-account-add(id="addbtn" href="./articleAdd")
+              span(style="display: inline-block;float:right;font-size:14px;margin-top:1px;margin-left:5px") 添加文章
+        .panel-body
+          table.table.table-condensed.table-hover.table-bordered.table-striped
+            thead
+              tr
+                th 文章标题
+                th 作者
+                th 添加时间
+                th 操作
+            tbody
+              each item in list
+                tr(id="#{item.id}")
+                  td #{item.name}
+                  td #{item.user}
+                  td.convert-time #{item.createdate}
+                  td 
+                    button.btn.btn-space.btn-primary
+                      i.icon.icon-left.mdi.mdi-border-color
+                      span 修改
+                    button.btn.btn-space.btn-primary
+                      i.icon.icon-left.mdi.mdi-delete
+                      span 删除
+                    a.btn.btn-space.btn-primary(href="/articleDetial?id=#{item.id}",target="_blank")
+                      i.icon.icon-left.mdi.mdi-play-circle-outline
+                      span 浏览
+        .panel-foot
+          .dataTables
+            .dataTables_info 第 #{pageNo} 页
+            .dataTables_paginate
+              ul.pagination
+                if !prevbtn
+                  li.paginate_button.previous
+                    a(href="./articleList?page=#{pageNo-1}") 上一页
+                else
+                  li.paginate_button.previous.disabled
+                    a 上一页
+                if !nextbtn
+                  li.paginate_button.next
+                    a(href="./articleList?page=#{pageNo+1}") 下一页
+                else
+                  li.paginate_button.next.disabled
+                    a 下一页
+    script(type='text/javascript', src='/js/jquery.min.js')
+    script(type='text/javascript', src='/js/tools.js')
+    script(type='text/javascript', src='/js/jquery.pager.js')
+    script(type='text/javascript').
+      $(function(argument) {
+        $('.convert-time').each(function(index,value){
+          $(value).text((new Date($(value).text())).Format("yyyy-MM-dd hh:mm:ss"))
+        })
+      })

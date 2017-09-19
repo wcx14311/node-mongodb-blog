@@ -1,0 +1,165 @@
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*zoom:1}
+.dialog-imgupLoad .dialog-bg{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top:0;
+  background-color: rgba(0, 0, 0, 0.3)
+}
+.dialog-imgupLoad .modal-title{
+  margin: 0;
+  padding:0 30px;
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+.dialog-imgupLoad .hide{
+  display: none;
+}
+.dialog-imgupLoad .dialog-content{
+  position: absolute;
+  width:800px;
+  background-color: #fff;
+  left: 50%;
+  margin-left: -400px;
+  top:50%;
+  margin-top: -300px;
+}
+.dialog-imgupLoad .close{
+  position: absolute;
+  right: 20px;
+  top:10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: none;
+}
+.dialog-imgupLoad button.btn-danger{
+  display: block;
+  width: 150px;
+  height: 40px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  line-height: 14px;
+  background-color:#da231b;
+  border-radius: 5px;
+  outline: none;
+}
+.dialog-imgupLoad button:active{
+  opacity: 0.5;
+}
+.dialog-imgupLoad .dialog-body{
+  padding-bottom: 15px;
+}
+.avatar-view {
+  display: block;
+  width: 220px;
+  height: 220px;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,.15);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.avatar-view img {
+  width: 100%;
+}
+
+.avatar-body {
+  padding-right: 15px;
+  padding-left: 30px;
+}
+
+.avatar-upload {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.avatar-upload label {
+  display: block;
+  float: left;
+  clear: left;
+  width: 100px;
+}
+
+.avatar-upload input {
+  display: block;
+  margin-left: 110px;
+}
+
+.avater-alert {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.avatar-wrapper {
+  height: 364px;
+  width:530px;
+  margin-bottom: 15px;
+  margin-right: 30px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,.25);
+  background-color: #fcfcfc;
+  overflow: hidden;
+}
+
+.avatar-wrapper img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.avatar-preview {
+  display: block;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.avatar-preview img {
+  width: 100%;
+}
+
+.preview-lg {
+  height:140px;
+  width:140px;
+}
+
+.preview-md {
+  height: 88px;
+  width: 88px;
+}
+
+.preview-sm {
+  border-radius: 30px;
+  height: 50px;
+  width: 50px;
+}
+.avatar-btns {
+  margin-top:15px;
+}
+
+.avatar-btns .btn-group {
+  margin-right: 5px;
+}
+
+.loading {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .75;
+  filter: alpha(opacity=75);
+  z-index: 20140628;
+}

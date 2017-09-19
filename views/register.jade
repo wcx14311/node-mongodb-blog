@@ -1,0 +1,37 @@
+doctype html
+html(lang='zh')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		title 用户注册
+		link(rel='stylesheet', type='text/css', href='/css/material-design-iconic-font.min.css')
+		link(rel='stylesheet', type='text/css', href='/css/perfect-scrollbar.min.css')
+		link(rel='stylesheet', type='text/css', href='/css/style.css',)
+	body.be-splash-screen
+		.be-wrapper.be-login
+			.be-content
+				.main-content.container-fluid
+					.splash-container
+						.panel.panel-default.panel-border-color.panel-border-color-primary
+							.panel-heading
+							.panel-body
+								form(action='./dolegister', method='get')
+									.form-group
+										input#username.form-control(type='text', placeholder='账号', autocomplete='off')
+									.form-group
+										input#password.form-control(type='password', placeholder='密码')
+									.form-group
+										input#password.form-control(type='password', placeholder='确认密码')
+									.form-group.login-submit
+										button.btn.btn-primary.btn-xl(data-dismiss='modal', type='submit') 注册
+		script(type='text/javascript' src='/js/jquery.min.js')
+		script(type='text/javascript' src='/js/perfect-scrollbar.jquery.min.js')
+		script(type='text/javascript' src='/js/bootstrap.min.js')
+		script(type='text/javascript' src='/js/main.js')
+		script(type='text/javascript').
+			$(document).ready(function(){
+				App.init();
+			});
