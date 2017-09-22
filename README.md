@@ -4,14 +4,11 @@
 ======
 
 项目整体效果
--------
-<div>
-  <img src="https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img1.png" width="888px"/>
-  <img src="https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img2.png" width="888px"/>
-  <img src="https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img3.png" width="888px"/>
-  <img src="https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img4.png" width="888px"/>
-  <img src="https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img5.png" width="888px"/>
-</div>
+![image](https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img1.png)
+![image](https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img2.png)
+![image](https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img3.png)
+![image](https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img4.png)
+![image](https://github.com/wcx14311/node-mongodb-blog/blob/master/public/images/git/img5.png)
 
 
 运行
